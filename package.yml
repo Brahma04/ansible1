@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: install a package git
+      apt:
+        name: 
+           - git
+           - wget
+           - tree
+        state: present
