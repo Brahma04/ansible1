@@ -1,0 +1,16 @@
+[debian]
+172.31.53.228
+172.31.56.75
+
+[rhel]
+172.31.54.31
+
+[webservers]
+172.31.53.228
+
+[appservers]
+172.31.54.31
+
+[random:children]
+webservers
+appservers
