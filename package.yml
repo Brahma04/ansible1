@@ -2,10 +2,21 @@
 - hosts: all
   become: yes
   tasks:
-    - name: install a package git
+    - name: install a package in ubuntu
       apt:
         name: 
-           - git
+           - gitaasdsd
            - wget
            - tree
-        state: present
+        state: latest
+      when: ansible_os_family == "Debian"
+
+    - name: install a package rhel
+      yum:
+        name:
+           - gitsdasda
+           - wget
+           - tree
+        state: latest
+      when: ansible_os_family == "RedHat"
+

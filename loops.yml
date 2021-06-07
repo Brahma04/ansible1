@@ -4,9 +4,5 @@
   tasks:
     - name: installing packages with loops
       apt:
-         name: "{{ item }}"
+         name: ['git', 'wget', 'tree']
          state: present
-      with_items:  
-        - git
-        - wget
-        - tree

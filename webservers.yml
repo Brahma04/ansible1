@@ -2,28 +2,28 @@
 - hosts: all
   become: true
   tasks:
-      - name: installing weberver in deb fjdshifbsfsdbfyus
+      - name: installing weberver in deb 
         apt: 
            name: apache2
            state: latest
         when: ansible_os_family == "Debian"
 
-      - name: installing webserver in rhel ahfidfhsilfslabb
+      - name: installing webserver in rhel 
         yum: 
            name: httpd
            state: latest
         when: ansible_os_family == "RedHat"
-      
-      - name: touch index.html
-        file:
-           path: /var/www/html/index.html
-           state: touch
 
       - name: copy file 
-        file:
-           src: index.html
+        template:
+           src: index.j2
            dest: /var/www/html/
+        notify:
+          - service restart in deb
+          - service restart in rhel
 
+
+  handlers:
       - name: service restart in deb
         service:
           name: apache2
@@ -35,3 +35,4 @@
           name: httpd
           state: restarted
         when: ansible_os_family == "RedHat"      
+

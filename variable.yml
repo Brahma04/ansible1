@@ -1,0 +1,13 @@
+---
+- hosts: debian
+  vars:
+          - car: hyundai
+            fruit: orange
+  tasks:
+          - name: variable1 presidency
+            debug:
+                    var: car
+
+          - name: variable2 presidency
+            debug: 
+                    msg: "{{fruit}}"

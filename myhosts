@@ -11,6 +11,15 @@
 [appservers]
 172.31.54.31
 
-[random:children]
-webservers
-appservers
+[all:children]
+debian
+rhel
+
+[debian:vars]
+java_deb=openjdk-8-jdk
+#car=tata
+fruit=apple
+
+
+[rhel:vars]
+java_rhel=java-1.8.0-openjdk

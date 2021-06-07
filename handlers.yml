@@ -1,0 +1,24 @@
+---
+- hosts: random
+  become: yes
+  tasks: 
+      - name: installing weberver in deb 
+        apt: 
+           name: apache2
+           state: latest
+        when: ansible_os_family == "Debian"
+
+      - name: copy file 
+        template:
+           src: index.j2
+           dest: /var/www/html/
+        notify:
+         - service restart in deb
+          
+
+  handlers:
+    - name: service restart in deb
+      service:
+        name: apache2
+        state: restarted
+      when: ansible_os_family == "Debian"
