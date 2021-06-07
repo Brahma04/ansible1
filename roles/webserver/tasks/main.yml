@@ -1,0 +1,21 @@
+---
+- name: installing weberver in deb
+  apt:
+      name: apache2
+      state: latest
+  when: ansible_os_family == "Debian"
+
+- name: installing webserver in rhel
+  yum:
+      name: httpd
+      state: latest
+  when: ansible_os_family == "RedHat"
+
+- name: copy file
+  template:
+      src: index.j2
+      dest: /var/www/html/index.html
+  notify:
+    - service restart in deb
+    - service restart in rhel
+

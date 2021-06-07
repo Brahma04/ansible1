@@ -1,0 +1,14 @@
+---
+# handlers file for webserver
+- name: service restart in deb
+  service:
+    name: apache2
+    state: restarted
+  when: ansible_os_family == "Debian"
+
+
+- name: service restart in rhel
+  service:
+    name: httpd
+    state: restarted
+  when: ansible_os_family == "RedHat"  
