@@ -27,6 +27,7 @@
     path: /opt/tomcat
     owner: tomcat
     group: tomcat
+    recurse: yes
   
 - name: give the executable permissions
   shell: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
