@@ -42,6 +42,7 @@
      name: tomcat
      state: reloaded
      enabled: yes
+  ignore_errors: yes
 
 - name: create role
   lineinfile:
